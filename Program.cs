@@ -44,7 +44,7 @@ List<ProductModel> products = new List<ProductModel>
         CategoryId = "1",
         Description = "Noise-cancelling over-ear headphones with Bluetooth connectivity.",
         Price = 99.99m,
-        ImageUrl = "https://example.com/images/headphones.jpg"
+        ImageUrl = "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRYdE_fuLUfnaOsH5B-c5j265vsuXWwDZRlRORtc_-m_PjzD_XawqKwnqZbTalDxjWRwB4fBUiAAcTdPZ_u4nRTgDbmdFmFH8HPVDdhaEIfu5EEKx0mWhgP_hpo-1YAJwMD6R-GWQ&usqp=CAc"
     },
     new ProductModel
     {
