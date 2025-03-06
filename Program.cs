@@ -85,7 +85,7 @@ List<ProductModel> products = new List<ProductModel>
 };
 
 // Cart items list
-List<CartItemModel> cartItems = new List<CartItemModel>();
+List<CartItemModel> cartItems = new();
 
 // Get all products
 app.MapGet("/get/products", () =>
@@ -106,32 +106,20 @@ app.MapGet("/get/categories", () =>
     return Results.Ok(categories);
 });
 
-// Add to cart
-app.MapPost("/post/addtocart", (CartItemModel cartItemModel) =>
+app.MapPost("/cart/add", (CartItemModel cartItemModel) =>
 {
     var product = products.Find(p => p.Id == cartItemModel.Product.Id);
     if (product == null)
-    {
         return Results.NotFound($"Product with ID {cartItemModel.Product.Id} not found.");
-    }
 
     var existingCartItem = cartItems.Find(item => item.Product.Id == cartItemModel.Product.Id);
     if (existingCartItem != null)
-    {
         existingCartItem.Quantity += cartItemModel.Quantity;
-    }
     else
-    {
-        cartItems.Add(new CartItemModel
-        {
-            Product = product,
-            Quantity = cartItemModel.Quantity
-        });
-    }
+        cartItems.Add(new CartItemModel { Product = product, Quantity = cartItemModel.Quantity });
 
-    return Results.Ok(new { Message = "Item added to cart", data = cartItems });
+    return Results.Ok(new { Message = "Item added to cart", Data = cartItems });
 });
-
 // Get all cart items
 app.MapGet("/get/cart", () => Results.Ok(cartItems));
 
