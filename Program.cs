@@ -94,7 +94,7 @@ app.MapGet("/get/products", () =>
 });
 
 // Get product by ID
-app.MapGet("/get/product/{id}", (int id) =>
+app.MapGet("/get/products/{id}", (int id) =>
 {
     var product = products.Find(p => p.Id == id);
     return product != null ? Results.Ok(product) : Results.NotFound($"Product with ID {id} not found");
